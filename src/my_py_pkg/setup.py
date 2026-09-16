@@ -26,7 +26,8 @@ setup(
         'console_scripts': [
             'my_node = my_py_pkg.node:main',
             'simple_publisher = my_py_pkg.simple_publisher:main',
-            'simple_subscriber = my_py_pkg.simple_subscriber:main'
+            'simple_subscriber = my_py_pkg.simple_subscriber:main',
+            'robot_news_station = my_py_pkg.robot_news_station:main',
         ],
     },
 )

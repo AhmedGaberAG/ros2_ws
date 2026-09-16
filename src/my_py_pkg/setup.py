@@ -30,9 +30,11 @@ setup(
             'robot_news_station = my_py_pkg.robot_news_station:main',
             'smart_phone = my_py_pkg.smart_phone:main',
             'number_publisher = my_py_pkg.number_publisher:main',
+            'number_subscriber = my_py_pkg.number_subscriber:main',
             'number_counter = my_py_pkg.number_counter:main',
             'simple_service_server = my_py_pkg.simple_service_server:main',
-            'simple_service_client = my_py_pkg.simple_service_client:main',           
+            'simple_service_client = my_py_pkg.simple_service_client:main', 
+            'number_client = my_py_pkg.number_client:main'          
         ],
     },
 )

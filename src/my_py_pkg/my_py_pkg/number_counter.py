@@ -3,6 +3,7 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Int64
+from std_srvs.srv import SetBool
 
 class NumberCounter(Node):
     def __init__(self):
@@ -16,9 +17,15 @@ class NumberCounter(Node):
 
         self.publisher_ = self.create_publisher(Int64, "number_count", 10)
 
+        self.service_ = self.create_service(
+            SetBool, 
+            "reset_number_count", 
+            self.serviceCallback
+        )
+
         self.counter_ = 0
 
-        self.get_logger().info("Subscribed to topic 'number'")
+        self.get_logger().info("Number Counter Has Been Started.")
 
     def msgCallback(self, msg):
         self.counter_ += msg.data
@@ -27,6 +34,17 @@ class NumberCounter(Node):
         self.publisher_.publish(new_msg)
         self.get_logger().info("Received: %d, Current Count: %d"
                                 % (msg.data, self.counter_))
+
+    def serviceCallback(self, request, response):
+        if request.data:
+            self.counter_ = 0
+            response.success = True
+            response.message = "Counter has been reset"
+        else:
+            response.success = False
+            response.message = "Counter has not been reset"
+        return response
+
         
 def main(args=None):
     rclpy.init(args=args)

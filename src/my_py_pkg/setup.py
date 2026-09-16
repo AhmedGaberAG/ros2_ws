@@ -31,6 +31,7 @@ setup(
             'smart_phone = my_py_pkg.smart_phone:main',
             'number_publisher = my_py_pkg.number_publisher:main',
             'number_counter = my_py_pkg.number_counter:main',
+            'simple_service_server = my_py_pkg.simple_service_server:main'
         ],
     },
 )

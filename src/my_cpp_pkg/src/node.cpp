@@ -1,33 +1,39 @@
 #include <rclcpp/rclcpp.hpp>
 #include <chrono>
 
-int counter = 0;
 
-void timer_callback()
+class MyNode : public rclcpp::Node
 {
-    counter++;
+public:
+    MyNode() : Node("my_node"), counter_(0)
+    {
+        RCLCPP_INFO(this->get_logger(), "Hello, ROS 2!");
+        
+        timer_ = this->create_wall_timer(
+            std::chrono::seconds(1),
+            std::bind(&MyNode::timer_callback, this)
+        );
+    }
+private:
+    void timer_callback()
+    {
+        counter_++;
+        RCLCPP_INFO(
+            this->get_logger(),
+            "Timer callback triggered! Count: %d",
+            counter_
+        );
+    }
 
-    RCLCPP_INFO(
-        rclcpp::get_logger("my_node"),
-        "Timer callback triggered! Count: %d",
-        counter
-    );
-}
+    rclcpp::TimerBase::SharedPtr timer_;
+    int counter_;
+};
 
 int main(int argc, char **argv)
 {
     rclcpp::init(argc, argv);
-    auto node = std::make_shared<rclcpp::Node>("my_node");
-    RCLCPP_INFO(node->get_logger(), "Hello, ROS 2!");
-    auto timer = node->create_wall_timer(
-        std::chrono::seconds(1),
-        timer_callback
-    );
+    auto node = std::make_shared<MyNode>();
     rclcpp::spin(node);
-   
-    // Destroy timer
-    timer->cancel();
-    timer.reset();
    
     // Destroy node
     node.reset();

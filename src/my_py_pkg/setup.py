@@ -28,6 +28,7 @@ setup(
             'simple_publisher = my_py_pkg.simple_publisher:main',
             'simple_subscriber = my_py_pkg.simple_subscriber:main',
             'robot_news_station = my_py_pkg.robot_news_station:main',
+            'smart_phone = my_py_pkg.smart_phone:main',
         ],
     },
 )

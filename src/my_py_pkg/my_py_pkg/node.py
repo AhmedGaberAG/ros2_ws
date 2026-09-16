@@ -3,19 +3,21 @@
 import rclpy
 from rclpy.node import Node
 
-counter = 0
+class MyNode(Node):
+    def __init__(self):
+        super().__init__("my_node")
+        self.counter_ = 0
+        self.get_logger().info("Hello, ROS 2!")
+        self.create_timer(1.0, self.timer_callback)
 
-def timer_callback():
-    global counter
-    counter += 1
-    print(f"Timer callback executed {counter} times.")
-
+    def timer_callback(self):
+        self.counter_ += 1
+        self.get_logger().info(
+            f"Timer callback executed {self.counter_} times.")
 
 def main(args=None):
     rclpy.init(args=args)
-    node = Node("my_node")
-    node.get_logger().info("Hello, ROS 2!")
-    node.create_timer(1.0, timer_callback)
+    node = MyNode()
     rclpy.spin(node)
     node.destroy_node()
     rclpy.shutdown()

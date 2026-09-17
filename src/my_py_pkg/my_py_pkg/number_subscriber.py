@@ -9,7 +9,7 @@ class NumberSubscriber(Node):
         super().__init__("number_subscriber")
         self.subscriber_ = self.create_subscription(
             Int64, 
-            "number_counter", 
+            "number_count", 
             self.msgCallback,
             10
         )

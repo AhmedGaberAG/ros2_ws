@@ -38,7 +38,9 @@ setup(
             "hardware_status_publisher=my_py_pkg.hardware_status_publisher:main",
             "hardware_status_subscriber=my_py_pkg.hardware_status_subscriber:main",
             "compute_rectangle_area_server=my_py_pkg.compute_rectangle_area_server:main", 
-            "compute_rectangle_area_client=my_py_pkg.compute_rectangle_area_client:main",                   
+            "compute_rectangle_area_client=my_py_pkg.compute_rectangle_area_client:main",
+            "led_panel=my_py_pkg.led_panel:main",
+            "battery=my_py_pkg.battery:main",                   
         ],  
     },
 )

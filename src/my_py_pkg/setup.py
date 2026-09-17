@@ -34,7 +34,9 @@ setup(
             'number_counter = my_py_pkg.number_counter:main',
             'simple_service_server = my_py_pkg.simple_service_server:main',
             'simple_service_client = my_py_pkg.simple_service_client:main', 
-            'number_client = my_py_pkg.number_client:main'          
-        ],
+            'number_client = my_py_pkg.number_client:main',
+            "hardware_status_publisher=my_py_pkg.hardware_status_publisher:main",
+            "hardware_status_subscriber=my_py_pkg.hardware_status_subscriber:main",          
+        ],  
     },
 )

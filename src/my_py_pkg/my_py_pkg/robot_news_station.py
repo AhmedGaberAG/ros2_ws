@@ -9,7 +9,7 @@ class RobotNewsStation(Node):
         super().__init__("robot_news_station")
         self.declare_parameter("robot_name", "C390")
         self.declare_parameter("frequency", 2.0)     
-        self.robot_name_ = self.get_parameter("counter").value
+        self.robot_name_ = self.get_parameter("robot_name").value
         self.frequency_ = self.get_parameter("frequency").value
 
         self.publisher_ = self.create_publisher(String, "robot_news", 10)

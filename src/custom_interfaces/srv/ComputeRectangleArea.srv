@@ -1,0 +1,6 @@
+# Request
+float64 width
+float64 length
+---
+# Response
+float64 area 

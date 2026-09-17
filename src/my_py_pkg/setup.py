@@ -36,7 +36,9 @@ setup(
             'simple_service_client = my_py_pkg.simple_service_client:main', 
             'number_client = my_py_pkg.number_client:main',
             "hardware_status_publisher=my_py_pkg.hardware_status_publisher:main",
-            "hardware_status_subscriber=my_py_pkg.hardware_status_subscriber:main",          
+            "hardware_status_subscriber=my_py_pkg.hardware_status_subscriber:main",
+            "compute_rectangle_area_server=my_py_pkg.compute_rectangle_area_server:main", 
+            "compute_rectangle_area_client=my_py_pkg.compute_rectangle_area_client:main",                   
         ],  
     },
 )

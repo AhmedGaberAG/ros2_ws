@@ -40,7 +40,8 @@ setup(
             "compute_rectangle_area_server=my_py_pkg.compute_rectangle_area_server:main", 
             "compute_rectangle_area_client=my_py_pkg.compute_rectangle_area_client:main",
             "led_panel=my_py_pkg.led_panel:main",
-            "battery=my_py_pkg.battery:main",                   
+            "battery=my_py_pkg.battery:main",
+            "simple_parameter=my_py_pkg.simple_parameter:main"                   
         ],  
     },
 )

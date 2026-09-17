@@ -12,12 +12,11 @@ class SimpleSubscriber(Node):
             "chatter",
             self.msgCallback,
             10
-        )
+        )     
         self.get_logger().info("Subscribed to topic 'chatter'")
         
     def msgCallback(self, msg):
         self.get_logger().info("Received: %s" % msg.data)
-
 
 def main(args=None):
     rclpy.init(args=args)

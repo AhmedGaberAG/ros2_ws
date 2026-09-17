@@ -8,23 +8,21 @@ from std_srvs.srv import SetBool
 class NumberCounter(Node):
     def __init__(self):
         super().__init__("number_counter")
+        self.declare_parameter("counter", 0)        
+        self.counter_ = self.get_parameter("counter").value
+
+        self.publisher_ = self.create_publisher(Int64, "number_count", 10)
         self.subscriber_ = self.create_subscription(
             Int64,
             "number",
             self.msgCallback,
             10
         )
-
-        self.publisher_ = self.create_publisher(Int64, "number_count", 10)
-
         self.service_ = self.create_service(
             SetBool, 
             "reset_number_count", 
             self.serviceCallback
         )
-
-        self.counter_ = 0
-
         self.get_logger().info("Number Counter Has Been Started.")
 
     def msgCallback(self, msg):

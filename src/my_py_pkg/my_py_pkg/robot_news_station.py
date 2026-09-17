@@ -7,15 +7,15 @@ from example_interfaces.msg import String
 class RobotNewsStation(Node):
     def __init__(self):
         super().__init__("robot_news_station")
+        self.declare_parameter("robot_name", "C390")
+        self.declare_parameter("frequency", 2.0)     
+        self.robot_name_ = self.get_parameter("counter").value
+        self.frequency_ = self.get_parameter("frequency").value
+
         self.publisher_ = self.create_publisher(String, "robot_news", 10)
-
-        self.frequency_ = 2.0  # Frequency in Hz
-        self.robot_name_ = "C390"  # Name of the robot news station
-
+        self.timer = self.create_timer(1.0 / self.frequency_, self.publishNews) 
         self.get_logger().info("Robot News Station initialized with frequency: %f Hz"
                                 % self.frequency_)
-
-        self.timer = self.create_timer(1.0 / self.frequency_, self.publishNews)
 
     def publishNews(self):
         msg = String() 

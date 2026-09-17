@@ -7,7 +7,6 @@ from std_msgs.msg import Int64
 class NumberSubscriber(Node):
     def __init__ (self):
         super().__init__("number_subscriber")
-
         self.subscriber_ = self.create_subscription(
             Int64, 
             "number_counter", 

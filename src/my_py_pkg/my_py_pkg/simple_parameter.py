@@ -27,7 +27,7 @@ class SimpleParameter(Node):
                     self.get_logger().info("Param simple_string_param changed!" \
                                             " new value is %s" % param.value)
                     result.successful = True
-
+                    
         return result
             
 def main():

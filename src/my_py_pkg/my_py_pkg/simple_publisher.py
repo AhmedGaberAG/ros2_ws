@@ -7,16 +7,16 @@ from std_msgs.msg import String
 class SimplePublisher(Node):
     def __init__(self):
         super().__init__("simple_publisher")
+        self.declare_parameter("counter", 0)
+        self.declare_parameter("frequency", 1.0)
+        self.counter_ = self.get_parameter("counter").value
+        self.frequency_ = self.get_parameter("frequency").value
+
         self.publisher_ = self.create_publisher(String, "chatter", 10)
-
-        self.counter_ = 0
-        self.frequency_ = 1.0  # Frequency in Hz
-
+        self.timer_ = self.create_timer(1.0 / self.frequency_, self.timerCallback)   
         self.get_logger().info("Publishing messages at a frequency of %f Hz"
                                 % self.frequency_)
         
-        self.timer_ = self.create_timer(1.0 / self.frequency_, self.timerCallback)
-
     def timerCallback(self):
         msg = String()
         msg.data = "Hello, ROS 2! %d" % self.counter_

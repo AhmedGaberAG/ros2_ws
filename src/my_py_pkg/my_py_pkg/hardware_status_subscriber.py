@@ -7,8 +7,12 @@ from custom_interfaces.msg import HardwareStatus
 class HardwareStatusSubscriber(Node):
     def __init__(self):
         super().__init__("hardware_status_subscriber")
-        self.subscriber_ = self.create_subscription(HardwareStatus, "hardware_status",
-                                                    self.msgCallback, 10)
+        self.subscriber_ = self.create_subscription(
+            HardwareStatus, 
+            "hardware_status",
+            self.msgCallback, 
+            10
+        )  
         self.get_logger().info("Subscribed to topic 'hardware_status'")
 
     def msgCallback(self, msg):

@@ -6,9 +6,13 @@ from rclpy.node import Node
 class MyNode(Node):
     def __init__(self):
         super().__init__("my_node")
-        self.counter_ = 0
+        self.declare_parameter("counter", 0)
+        self.declare_parameter("frequency", 1.0)  
+        self.counter_ = self.get_parameter("counter").value
+        self.frequency_ = self.get_parameter("frequency").value 
+
+        self.create_timer(1.0 / self.frequency_, self.timer_callback)
         self.get_logger().info("Hello, ROS 2!")
-        self.create_timer(1.0, self.timer_callback)
 
     def timer_callback(self):
         self.counter_ += 1

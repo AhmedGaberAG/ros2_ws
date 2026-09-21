@@ -41,7 +41,13 @@ setup(
             "compute_rectangle_area_client=my_py_pkg.compute_rectangle_area_client:main",
             "led_panel=my_py_pkg.led_panel:main",
             "battery=my_py_pkg.battery:main",
-            "simple_parameter=my_py_pkg.simple_parameter:main"                   
+            "simple_parameter=my_py_pkg.simple_parameter:main",
+            "simple_action_server=my_py_pkg.simple_action_server:main",
+            "simple_action_client=my_py_pkg.simple_action_client:main",                   
+            "count_until_server=my_py_pkg.count_until_server:main",
+            "count_until_client=my_py_pkg.count_until_client:main",
+            "move_robot_server=my_py_pkg.move_robot_server:main",
+            "move_robot_client=my_py_pkg.move_robot_client:main"
         ],  
     },
 )

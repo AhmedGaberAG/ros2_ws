@@ -1,5 +1,10 @@
 # ROS 2 Fundamentals Workspace
 
+![ROS 2 Humble](https://img.shields.io/badge/ROS_2-Humble-blue)
+![Ubuntu 22.04](https://img.shields.io/badge/Ubuntu-22.04-orange)
+![Python 3.10](https://img.shields.io/badge/Python-3.10-yellow)
+![ROS 2 Architecture](media/ros2_workspace_poster.png)
+
 A practical ROS 2 learning workspace focused on understanding the core concepts required to build modular, distributed, and reliable robotic software.
 
 This repository implements ROS 2 fundamentals through small, independent examples and progressively connected applications using **Python**, **custom interfaces**, **services**, **actions**, **parameters**, **QoS**, **executors**, **callback groups**, **lifecycle nodes**, and **launch files**.
@@ -36,13 +41,106 @@ This workspace demonstrates how these building blocks work together:
 
 ---
 
+## ⚡ Quick Start
+
+### 1. Source ROS 2
+
+```bash
+source /opt/ros/humble/setup.bash
+```
+
+### 2. Clone the repository
+
+```bash
+git clone https://github.com/AhmedGaberAG/ros2_ws.git
+cd ros2_ws
+```
+
+### 3. Build the workspace
+
+```bash
+colcon build --symlink-install
+```
+
+### 4. Source the workspace
+
+```bash
+source install/setup.bash
+```
+
+### 5. Run the basic publisher/subscriber example
+
+Terminal 1:
+
+```bash
+ros2 run my_py_pkg simple_publisher
+```
+
+Terminal 2:
+
+```bash
+source /opt/ros/humble/setup.bash
+source ~/ros2_ws/install/setup.bash
+
+ros2 run my_py_pkg simple_subscriber
+```
+
+Inspect the running system:
+
+```bash
+ros2 node list
+ros2 topic list
+rqt_graph
+```
+
+For the complete examples and individual commands, see the sections below.
+
+---
+
+## 📑 Table of Contents
+
+* [Overview](#-overview)
+* [Quick Start](#-quick-start)
+* [What This Workspace Covers](#-what-this-workspace-covers)
+* [ROS 2 Architecture](#️-ros-2-architecture)
+* [Workspace Structure](#-workspace-structure)
+* [Installation & Build](#️-installation--build)
+* [Nodes](#1-nodes)
+* [Topics](#2-topics)
+* [Services](#3-services)
+* [Custom Services](#4-custom-services)
+* [Actions](#5-actions)
+* [Fibonacci Action](#6-fibonacci-action)
+* [Action Goal Management](#7-action-goal-management)
+* [Parameters](#8-parameters)
+* [QoS](#9-qos--quality-of-service)
+* [Executors](#10-executors)
+* [Callback Groups](#11-callback-groups)
+* [Lifecycle Nodes](#12-lifecycle-nodes)
+* [Lifecycle Number Publisher](#13-lifecycle-number-publisher)
+* [Launch Files](#14-launch-files)
+* [Launching Multiple Instances](#15-launching-multiple-instances)
+* [Custom Interfaces](#16-custom-interfaces)
+* [Hardware Status Example](#17-hardware-status-example)
+* [Battery + LED State Machine](#18-battery--led-state-machine)
+* [Multiple Nodes in One Process](#19-multiple-nodes-in-one-process)
+* [Recommended Learning Path](#-recommended-learning-path)
+* [ROS 2 CLI Cheat Sheet](#-ros-2-cli-cheat-sheet)
+* [What This Repository Demonstrates](#-what-this-repository-demonstrates)
+* [Scope of This Repository](#-scope-of-this-repository)
+* [Next Step](#-next-step)
+* [Author](#-author)
+* [License](#-license)
+
+---
+
 # 🎯 What This Workspace Covers
 
 | Concept                  | Implementation                               |
 | ------------------------ | -------------------------------------------- |
 | ROS 2 Nodes              | Multiple Python nodes                        |
 | Topics                   | Publishers / Subscribers                     |
-| Services                 | Synchronous request/response communication   |
+| Services                 | Request/response communication               |
 | Actions                  | Long-running goals with feedback and results |
 | Custom Interfaces        | Custom `.msg`, `.srv`, `.action`             |
 | Parameters               | Static and dynamically validated parameters  |
@@ -57,6 +155,19 @@ This workspace demonstrates how these building blocks work together:
 | Goal Management          | Action cancellation, queuing and preemption  |
 | ROS Time                 | Timers and ROS clock                         |
 | State Machines           | Battery and lifecycle-based behavior         |
+
+### ⭐ Key Implementations
+
+Beyond the basic ROS 2 communication examples, this workspace includes several practical patterns commonly used in robotic software:
+
+* **Action goal queueing** with `CountUntil`
+* **Action preemption** with `MoveRobot`
+* **Lifecycle management** using a dedicated lifecycle manager
+* **QoS configuration and compatibility**
+* **MultiThreadedExecutor + callback groups**
+* **Service → State → Topic integration** with the LED example
+* **Multiple ROS 2 nodes in a single Python process**
+* **Custom `.msg`, `.srv`, and `.action` interfaces**
 
 ---
 
@@ -89,7 +200,7 @@ The following diagram represents the main layers involved when developing a ROS 
 │       ROS Middleware Abstraction            │
 └──────────────────────┬──────────────────────┘
                        │
-┌──────────────────────▼──────────────────────┐
+┌─────────────────────────────────────────────┐
 │          DDS / Middleware Implementation    │
 │                                             │
 │ Discovery / Transport / QoS / Communication │
@@ -163,6 +274,17 @@ ros2_ws/
 │           ├── simple_single_threaded_executor.py
 │           └── simple_subscriber.py
 │
+├── media/
+│   ├── actions.gif
+│   ├── actions.png
+│   ├── actions_state_machine.png
+│   ├── lifecycle_node.png
+│   ├── nodes.gif
+│   ├── ros2_architecture.png
+│   ├── ros2_workspace_poster.png
+│   ├── services.gif
+│   └── topics.gif
+│
 ├── .gitignore
 └── README.md
 ```
@@ -231,7 +353,7 @@ A node can contain:
 
 ### Example
 
-The workspace contains a simple node:
+The workspace contains a simple node communication example:
 
 ```text
 simple_publisher
@@ -243,7 +365,7 @@ simple_publisher
 simple_subscriber
 ```
 
-![ROS 2 Nodes](media/nodes.png)
+![ROS 2 Nodes](media/nodes.gif)
 
 ### Run the publisher
 
@@ -306,7 +428,7 @@ Publisher
 Subscriber
 ```
 
-![ROS 2 Topics](media/topics.png)
+![ROS 2 Topics](media/topics.gif)
 
 The workspace contains several topic examples.
 
@@ -418,7 +540,7 @@ Service Client
 Service Server
 ```
 
-![ROS 2 Services](media/services.png)
+![ROS 2 Services](media/services.gif)
 
 The workspace demonstrates both standard and custom services.
 
@@ -552,6 +674,14 @@ Unlike a service, an action can provide:
 * Result
 * Cancellation
 
+The workspace contains three custom action implementations:
+
+```text
+Fibonacci
+CountUntil
+MoveRobot
+```
+
 ```text
                     Action Client
                          │
@@ -568,7 +698,11 @@ Unlike a service, an action can provide:
           Feedback     Result     Cancel
 ```
 
-![ROS 2 Actions](media/actions.png)
+![ROS 2 Actions](media/actions.gif)
+
+![ROS 2 Actions work](media/actions.png)
+
+![ROS 2 Actions state machine](media/actions_state_machine.png)
 
 ---
 
@@ -890,7 +1024,7 @@ Callback groups determine how callbacks are allowed to execute relative to each 
 
 The workspace demonstrates:
 
-### Reentrant Callback Group
+## Reentrant Callback Group
 
 Callbacks can execute concurrently when the executor and system allow it.
 
@@ -899,7 +1033,7 @@ Used in:
 * `count_until_server`
 * `move_robot_server`
 
-### Mutually Exclusive Callback Group
+## Mutually Exclusive Callback Group
 
 Callbacks belonging to the group cannot execute simultaneously.
 
@@ -1499,3 +1633,7 @@ GitHub: `AhmedGaberAG`
 # 📄 License
 
 This project is intended for educational and portfolio purposes.
+
+
+
+ROS 2 Fundamentals Workspace

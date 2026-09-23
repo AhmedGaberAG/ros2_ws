@@ -53,7 +53,9 @@ setup(
             "lifecycle_node_manager=my_py_pkg.lifecycle_node_manager:main",
             "simple_single_threaded_executor=my_py_pkg.simple_single_threaded_executor:main",
             "simple_multi_threaded_executor=my_py_pkg.simple_multi_threaded_executor:main",
-            "container=my_py_pkg.container:main"
+            "container=my_py_pkg.container:main",
+            "simple_qos_publisher=my_py_pkg.simple_qos_publisher:main",
+            "simple_qos_subscriber=my_py_pkg.simple_qos_subscriber:main"
         ],  
     },
 )

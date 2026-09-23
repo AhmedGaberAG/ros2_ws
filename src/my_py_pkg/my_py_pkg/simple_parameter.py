@@ -14,20 +14,26 @@ class SimpleParameter(Node):
 
     def paramChangeCallback(self, params):
         result = SetParametersResult()
+        result.successful = True
 
         for param in params:
-            if param.name == "simple_int_param" and \
-               param.type_ == Parameter.Type.INTEGER :
+            if param.name == "simple_int_param":
+                if param.type_ == Parameter.Type.INTEGER:
                     self.get_logger().info("Param simple_int_param changed!" \
                                             " new value is %d" % param.value)
-                    result.successful = True
-                    
-            if param.name == "simple_string_param" and \
-               param.type_ == Parameter.Type.STRING :
+                else:
+                    result.successful = False
+
+            elif param.name == "simple_string_param":
+                if param.type_ == Parameter.Type.STRING:
                     self.get_logger().info("Param simple_string_param changed!" \
                                             " new value is %s" % param.value)
-                    result.successful = True
-                    
+                else:
+                    result.successful = False
+
+            else:
+                result.successful = False
+
         return result
             
 def main():

@@ -10,7 +10,7 @@ class LedPanel(Node):
         super().__init__("led_panel")
         self.declare_parameter("led_state", [0, 0, 0])
         self.declare_parameter("frequency", 0.25)       
-        self.led_state_ = self.get_parameter("led_state_").value
+        self.led_state_ = self.get_parameter("led_state").value
         self.frequency_ = self.get_parameter("frequency").value
         
         self.publisher_ = self.create_publisher(LedStateArray, "led_panel_state", 10)

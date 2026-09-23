@@ -15,7 +15,7 @@ class ComputeRectangleAreaServer(Node):
         self.get_logger().info("Service compute_rectangle_area is ready")
 
     def serviceCallback(self, request, response):
-        response.area = (request.width + request.length) * 2.0
+        response.area = request.width + request.length
         self.get_logger().info("Rectnagle Area Is : " + 
                                str(response.area))
         return response

@@ -52,7 +52,8 @@ setup(
             "number_publisher_lifecycle_node = my_py_pkg.number_publisher_lifecycle_node:main",
             "lifecycle_node_manager=my_py_pkg.lifecycle_node_manager:main",
             "simple_single_threaded_executor=my_py_pkg.simple_single_threaded_executor:main",
-            "simple_multi_threaded_executor=my_py_pkg.simple_multi_threaded_executor:main"
+            "simple_multi_threaded_executor=my_py_pkg.simple_multi_threaded_executor:main",
+            "container=my_py_pkg.container:main"
         ],  
     },
 )

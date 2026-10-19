@@ -54,8 +54,6 @@ ros2_ws/
 │   ├── custom_interfaces/  # msg / srv / action definitions
 │   ├── my_cpp_pkg/         # C++ examples
 │   └── my_py_pkg/          # Python examples
-├── docs/
-│   └── WORKSPACE_AUDIT.md  # full findings (severity, locations, fixes)
 ├── media/                  # diagrams and animated GIFs
 └── README.md
 ```
@@ -137,7 +135,7 @@ ros2 launch bringup all_app.launch.py
 ```
 
 > Python and C++ demos share topic/service/action names, so run one language at a
-> time. See `docs/WORKSPACE_AUDIT.md` for details.
+> time.
 
 ## Screenshots
 
@@ -154,14 +152,8 @@ Additional diagrams: `media/ros2_architecture.png`, `media/qos.png`,
 
 ## Known Issues
 
-Full findings are in [`docs/WORKSPACE_AUDIT.md`](docs/WORKSPACE_AUDIT.md). Key items:
-
-| ID | Severity | Summary | Location |
-|---|---|---|---|
-| AUD-001 | High | Component plugin name mismatch — executable starts but creates no node | `my_cpp_pkg/CMakeLists.txt:131` |
-| AUD-002 | High | `/number` type mismatch (`example_interfaces` vs `std_msgs` Int64) | `number_publisher_component.cpp:12` |
-| AUD-003 | Med-High | `battery` (C++) never joins worker threads → `std::terminate` on exit | `battery.cpp:79` |
-| AUD-004 | Medium | LED topic differs: `led_panel_state` (py) vs `led_states` (cpp) | `led_panel.cpp:12` |
+- `battery` (C++) does not join its worker threads, causing a `std::terminate` on shutdown.
+- The LED topic name differs between the Python and C++ `led_panel` examples (`led_panel_state` vs `led_states`).
 
 ## License
 

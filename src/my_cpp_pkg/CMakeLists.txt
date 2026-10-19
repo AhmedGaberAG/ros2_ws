@@ -127,7 +127,7 @@ ament_target_dependencies(manual_composition rclcpp)
 
 # Create a component library
 add_library(number_publisher_component SHARED src/number_publisher_component.cpp)
-ament_target_dependencies(number_publisher_component rclcpp rclcpp_components example_interfaces)
+ament_target_dependencies(number_publisher_component rclcpp rclcpp_components std_msgs)
 rclcpp_components_register_node(number_publisher_component PLUGIN "my_cpp_pkg::NumberPublisherComponent" 
                                                            EXECUTABLE number_publisher_component_exec)
 

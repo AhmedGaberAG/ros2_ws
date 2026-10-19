@@ -23,7 +23,6 @@ and run, observe and test each one from the ROS 2 CLI.
 - [Installation & Build](#installation--build)
 - [Run Examples](#run-examples)
 - [Screenshots](#screenshots)
-- [Known Issues](#known-issues)
 
 ## Overview
 
@@ -149,11 +148,6 @@ ros2 launch bringup all_app.launch.py
 
 Additional diagrams: `media/ros2_architecture.png`, `media/qos.png`,
 `media/lifecycle_node.png`, `media/actions_state_machine.png`.
-
-## Known Issues
-
-- `battery` (C++) does not join its worker threads, causing a `std::terminate` on shutdown.
-- The LED topic name differs between the Python and C++ `led_panel` examples (`led_panel_state` vs `led_states`).
 
 ## License
 

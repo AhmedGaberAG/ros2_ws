@@ -3,14 +3,35 @@
 <package format="3">
   <name>my_cpp_pkg</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="ahmedmgaber28@gmail.com">ag</maintainer>
-  <license>TODO: License declaration</license>
+  <description>ROS 2 C++ examples</description>
+  <maintainer email="ahmedmgaber28@gmail.com">Ahmed Gaber</maintainer>
+  <license>Apache-2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
+  <!-- ROS 2 core -->
   <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <depend>std_srvs</depend>
+  <depend>example_interfaces</depend>
 
+  <!-- Custom interfaces -->
+  <depend>custom_interfaces</depend>
+
+  <!-- Parameters -->
+  <depend>rcl_interfaces</depend>
+
+  <!-- Actions -->
+  <depend>rclcpp_action</depend>
+
+  <!-- Lifecycle -->
+  <depend>rclcpp_lifecycle</depend>
+  <depend>lifecycle_msgs</depend>
+
+  <!-- Components -->
+  <depend>rclcpp_components</depend>
+
+  <!-- Testing and linting -->
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
 

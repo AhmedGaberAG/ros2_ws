@@ -13,10 +13,10 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='ag',
+    maintainer='Ahmed Gaber',
     maintainer_email='ahmedmgaber28@gmail.com',
-    description='TODO: Package description',
-    license='TODO: License declaration',
+    description='ROS 2 Python examples for the fundamentals workspace.',
+    license='Apache-2.0',
     extras_require={
         'test': [
             'pytest',

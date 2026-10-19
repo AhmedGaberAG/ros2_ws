@@ -3,17 +3,28 @@
 <package format="3">
   <name>my_py_pkg</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="ahmedmgaber28@gmail.com">ag</maintainer>
-  <license>TODO: License declaration</license>
+  <description>ROS 2 Python examples for the fundamentals workspace.</description>
+  <maintainer email="ahmedmgaber28@gmail.com">Ahmed Gaber</maintainer>
+  <license>Apache-2.0</license>
 
+  <buildtool_depend>ament_cmake_python</buildtool_depend>
+
+  <!-- ROS 2 core -->
   <depend>rclpy</depend>
-  <exec_depend>std_msgs</exec_depend>
-  <exec_depend>example_interfaces</exec_depend>
-  <exec_depend>custom_interfaces</exec_depend>
-  <exec_depend>rcl_interfaces</exec_depend>
-  <exec_depend>lifecycle_msgs</exec_depend>
-   
+  <depend>std_msgs</depend>
+  <depend>std_srvs</depend>
+  <depend>example_interfaces</depend>
+
+  <!-- Custom interfaces -->
+  <depend>custom_interfaces</depend>
+
+  <!-- Parameters -->
+  <depend>rcl_interfaces</depend>
+
+  <!-- Lifecycle -->
+  <depend>lifecycle_msgs</depend>
+
+  <!-- Testing and linting -->
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
   <test_depend>ament_pep257</test_depend>

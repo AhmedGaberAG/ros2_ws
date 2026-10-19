@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="my_cpp_pkg" exec="simple_publisher" name="simple_publisher"/>
+  <node pkg="my_cpp_pkg" exec="simple_subscriber" name="simple_subscriber"/>
+
+  <node pkg="my_cpp_pkg" exec="number_publisher" name="number_publisher">
+    <param name="number" value="2"/>
+  </node>
+  <node pkg="my_cpp_pkg" exec="number_counter" name="number_counter"/>
+
+  <node pkg="my_cpp_pkg" exec="robot_news_station" name="robot_news_station">
+    <param name="robot_name" value="R2D2"/>
+  </node>
+  <node pkg="my_cpp_pkg" exec="smart_phone" name="smart_phone"/>
+
+  <node pkg="my_cpp_pkg" exec="hw_status_publisher" name="hw_status_publisher"/>
+  <node pkg="my_cpp_pkg" exec="hw_status_subscriber" name="hw_status_subscriber"/>
+
+  <node pkg="my_cpp_pkg" exec="simple_service_server" name="simple_service_server"/>
+  <node pkg="my_cpp_pkg" exec="led_panel" name="led_panel"/>
+  <node pkg="my_cpp_pkg" exec="battery" name="battery"/>
+
+  <node pkg="my_cpp_pkg" exec="simple_action_server" name="simple_action_server"/>
+  <node pkg="my_cpp_pkg" exec="count_until_server" name="count_until_server"/>
+  <node pkg="my_cpp_pkg" exec="move_robot_server" name="move_robot_server"/>
+
+  <node pkg="my_cpp_pkg" exec="simple_parameter" name="simple_parameter"/>
+  <node pkg="my_cpp_pkg" exec="simple_single_threaded_executor" name="simple_single_threaded_executor"/>
+  <node pkg="my_cpp_pkg" exec="simple_multi_threaded_executor" name="simple_multi_threaded_executor"/>
+  <node pkg="my_cpp_pkg" exec="simple_lifecycle_node" name="simple_lifecycle_node"/>
+  <node pkg="my_cpp_pkg" exec="manual_composition" name="manual_composition"/>
+</launch>

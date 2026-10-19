@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+  <include file="$(find-pkg-share bringup)/launch/chatter_app.launch.xml"/>
+  <include file="$(find-pkg-share bringup)/launch/hardware_status_app.launch.xml"/>
+  <include file="$(find-pkg-share bringup)/launch/services_app.launch.xml"/>
+  <include file="$(find-pkg-share bringup)/launch/led_app.launch.xml"/>
+  <include file="$(find-pkg-share bringup)/launch/actions_app.launch.xml"/>
+  <include file="$(find-pkg-share bringup)/launch/parameters_app.launch.xml"/>
+  <include file="$(find-pkg-share bringup)/launch/qos_app.launch.xml"/>
+  <include file="$(find-pkg-share bringup)/launch/executors_app.launch.xml"/>
+  <include file="$(find-pkg-share bringup)/launch/composition_app.launch.xml"/>
+  <include file="$(find-pkg-share bringup)/launch/lifecycle_app.launch.xml"/>
+</launch>

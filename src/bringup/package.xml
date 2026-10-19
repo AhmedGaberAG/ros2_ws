@@ -3,14 +3,22 @@
 <package format="3">
   <name>bringup</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="ahmedmgaber28@gmail.com">ag</maintainer>
-  <license>TODO: License declaration</license>
+  <description>Launch files and application entry points for the ROS 2 fundamentals workspace.</description>
+  <maintainer email="ahmedmgaber28@gmail.com">Ahmed Gaber</maintainer>
+  <license>Apache-2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <exec_depend>my_py_pkg</exec_depend>
-  
+  <!-- Launch infrastructure -->
+  <depend>launch</depend>
+  <depend>launch_ros</depend>
+  <depend>ament_index_python</depend>
+
+  <!-- Workspace packages -->
+  <depend>my_py_pkg</depend>
+  <depend>my_cpp_pkg</depend>
+
+  <!-- Testing and linting -->
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
 

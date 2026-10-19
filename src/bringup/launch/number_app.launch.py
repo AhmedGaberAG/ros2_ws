@@ -20,7 +20,7 @@ def generate_launch_description():
     )
 
     number_counter_node = Node(
-        package="my_py_pkg",
+        package="my_cpp_pkg",
         executable="number_counter",
         name="my_num_count",
         remappings=[

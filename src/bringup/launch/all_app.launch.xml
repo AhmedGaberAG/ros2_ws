@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+  <include file="$(find-pkg-share bringup)/launch/python_app.launch.xml"/>
+  <include file="$(find-pkg-share bringup)/launch/number_app.launch.xml"/>
+  <include file="$(find-pkg-share bringup)/launch/radio_app.launch.xml"/>
+</launch>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="my_py_pkg" exec="simple_qos_publisher" name="simple_qos_publisher">
+    <remap from="chatter" to="qos_chatter"/>
+  </node>
+  <node pkg="my_py_pkg" exec="simple_qos_subscriber" name="simple_qos_subscriber">
+    <remap from="chatter" to="qos_chatter"/>
+  </node>
+</launch>

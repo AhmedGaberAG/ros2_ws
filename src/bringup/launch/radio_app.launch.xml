@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="my_py_pkg" exec="robot_news_station" name="robot_news_station_giskard">
+    <param name="robot_name" value="Giskard"/>
+  </node>
+  <node pkg="my_py_pkg" exec="robot_news_station" name="robot_news_station_bb8">
+    <param name="robot_name" value="BB8"/>
+  </node>
+  <node pkg="my_py_pkg" exec="robot_news_station" name="robot_news_station_dannel">
+    <param name="robot_name" value="Dannel"/>
+  </node>
+  <node pkg="my_py_pkg" exec="robot_news_station" name="robot_news_station_jander">
+    <param name="robot_name" value="Jander"/>
+  </node>
+  <node pkg="my_py_pkg" exec="robot_news_station" name="robot_news_station_c3p0">
+    <param name="robot_name" value="C3P0"/>
+  </node>
+
+  <node pkg="my_cpp_pkg" exec="smart_phone" name="smart_phone"/>
+</launch>

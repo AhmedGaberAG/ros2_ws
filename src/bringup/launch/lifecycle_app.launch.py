@@ -4,6 +4,7 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     ld = LaunchDescription()
+
     number_node_name = "my_num_pub"
 
     number_publisher_lifecycle_node = LifecycleNode(
@@ -13,7 +14,7 @@ def generate_launch_description():
         namespace=""
     )
 
-    lifecycle_node_manager = Node(
+    lifecycle_node_manager_node = Node(
         package="my_py_pkg",
         executable="lifecycle_node_manager",
         name="lifecycle_node_manager",
@@ -23,5 +24,5 @@ def generate_launch_description():
     )
 
     ld.add_action(number_publisher_lifecycle_node)
-    ld.add_action(lifecycle_node_manager)
+    ld.add_action(lifecycle_node_manager_node)
     return ld

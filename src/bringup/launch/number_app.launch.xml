@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="my_py_pkg" exec="number_publisher" name="my_num_pub">
+    <remap from="number" to="num"/>
+    <param name="number" value="2"/>
+    <param name="frequency" value="1.0"/>
+  </node>
+
+  <node pkg="my_cpp_pkg" exec="number_counter" name="my_num_count">
+    <remap from="number" to="num"/>
+    <remap from="number_count" to="num_count"/>
+  </node>
+
+  <node pkg="my_py_pkg" exec="number_subscriber" name="my_num_sub">
+    <remap from="number_count" to="num_count"/>
+  </node>
+</launch>

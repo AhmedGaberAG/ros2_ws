@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="my_py_pkg" exec="simple_action_server" name="simple_action_server"/>
+  <node pkg="my_py_pkg" exec="count_until_server" name="count_until_server"/>
+  <node pkg="my_py_pkg" exec="move_robot_server" name="move_robot_server"/>
+</launch>

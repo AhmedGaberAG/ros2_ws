@@ -3,8 +3,9 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     ld = LaunchDescription()
+
     robot_names = ["Giskard", "BB8", "Dannel", "Jander", "C3P0"]
-    robot_news_station_nodes = [] 
+    robot_news_station_nodes = []
 
     for name in robot_names:
         robot_news_station_nodes.append(Node(
@@ -17,11 +18,12 @@ def generate_launch_description():
         ))
 
     smart_phone_node = Node(
-        package="my_py_pkg",
-        executable="smart_phone"
+        package="my_cpp_pkg",
+        executable="smart_phone",
+        name="smart_phone"
     )
 
-    for node in robot_news_station_nodes:
-        ld.add_action(node)
+    for robot_news_station_node in robot_news_station_nodes:
+        ld.add_action(robot_news_station_node)
     ld.add_action(smart_phone_node)
     return ld
